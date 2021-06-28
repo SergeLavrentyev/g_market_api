@@ -64,6 +64,7 @@ class GetProducts extends Command
             $catalog['price'] = $item['PRICE'];
             $catalog['currency_id'] = $item['CURRENCY_ID'];
             $catalog->save();
+            print_r($catalog);
         }
 
         print_r('catalog loaded');
