@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TickerController;
+use App\Http\Controllers\CatalogController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,9 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/tickers', [TickerController::class, 'get_tickers']);
 
-Route::get('/catalog', function() {
-    return Product::all();
-});
+Route::get('/catalog', [CatalogController::class, 'get_catalog']);
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);

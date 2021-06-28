@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCatalogsTable extends Migration
+class CreateProductListTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,16 +17,16 @@ class CreateCatalogsTable extends Migration
             $table->id();
             $table->integer('bitrix_id');
             $table->string('name');
-            $table->string('code');
+            $table->string('code')->nullable();
             $table->string('active');
             $table->string('preview_picture')->nullable();
             $table->string('detail_picture')->nullable();
             $table->integer('sort')->nullable();
             $table->integer('catalog_id')->nullable();
             $table->integer('section_id')->nullable();
-            $table->string('description');
-            $table->string('price');
-            $table->string('currency_id');
+            $table->string('description')->nullable();
+            $table->string('price')->nullable();
+            $table->string('currency_id')->nullable();
             $table->timestamps();
         });
     }

@@ -45,28 +45,28 @@ class GetProducts extends Command
         $url = env('CATALOG_URL');
         $response = Http::get($url);
         print_r('send request to bitrix');
-        $btx_catalog = json_decode($response->body());
+        $btx_catalog = json_decode($response->body(), true);
         print_r('storing data to db');
-        print_r($btx_catalog);
 
         $catalog = new Catalog;
 
-        dd($btx_catalog);
-
-        foreach($btx_catalog as $item) {
-            $catalog['bitrix_id'] = $item['ID'];
+        foreach($btx_catalog['result'] as $item) {
+            $catalog['bitrix_id'] = $item["ID"];
             $catalog['name'] = $item['NAME'];
             $catalog['code'] = $item['CODE'];
             $catalog['active'] = $item['ACTIVE'];
             $catalog['preview_picture'] = $item['PREVIEW_PICTURE'];
-            $catalog['bitrix_id'] = $item['id'];
-            $catalog['bitrix_id'] = $item['id'];
-            $catalog['bitrix_id'] = $item['id'];
-            $catalog['bitrix_id'] = $item['id'];
-            $catalog['bitrix_id'] = $item['id'];
-            $catalog['bitrix_id'] = $item['id'];
-            $catalog['bitrix_id'] = $item['id'];
+            $catalog['detail_picture'] = $item['DETAIL_PICTURE'];
+            $catalog['sort'] = $item['SORT'];
+            $catalog['catalog_id'] = $item['CATALOG_ID'];
+            $catalog['section_id'] = $item['SECTION_ID'];
+            $catalog['description'] = $item['DESCRIPTION'];
+            $catalog['price'] = $item['PRICE'];
+            $catalog['currency_id'] = $item['CURRENCY_ID'];
+            $catalog->save();
         }
+
+        print_r('catalog loaded');
 
         // Product::truncate();
         // $url = env('PRODUCT_URL');
