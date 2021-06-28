@@ -8,7 +8,7 @@ class CatalogController extends Controller
 {
     public function get_catalog()
     {
-        $catalog = Catalog::all();
+        $catalog = Catalog::get();
 
         return json_encode($catalog);
     }
