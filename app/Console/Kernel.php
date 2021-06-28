@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('ticker:download')->everyMinute();
-        $schedule->command('catalog:get')->hourly();
+        $schedule->command('catalog:get')->everyMinute();
     }
 
     /**
