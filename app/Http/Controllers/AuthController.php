@@ -30,9 +30,8 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $registerData = $request->validate([
-            'name' => 'required',
             'email' => 'email|required|unique:users',
-            'password' => 'required|confirmed'
+            'password' => 'required'
         ]);
 
         $registerData['password'] = bcrypt($request->password);
